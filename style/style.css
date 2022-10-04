@@ -14,7 +14,7 @@ body{
 
 .cabec{    
     padding-top: 1px;
-    margin-top: 90px;    
+    margin-top: 50px;    
 }
 
 .bordas{
@@ -23,14 +23,19 @@ body{
     border-color:blue;
 }
 
-.cabec-icon{
-    padding: 0px;    
+.cabec-icon{    
     background: #ccccc3;
 }
 
 .display{
     display: inline-block;
     vertical-align: top;
+}
+
+.foto-perfil{
+    border-color: white;
+    border-style: solid;
+    border-radius: 100px;
 }
 
 .cabec-foto{    
@@ -42,7 +47,8 @@ body{
 }
 
 .info-principal{
-    margin-left: 10px;    
+    margin-top: 10px;
+    margin-left: 40px;        
 }
 
 .folder{
