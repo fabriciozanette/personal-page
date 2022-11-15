@@ -1,0 +1,136 @@
+body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
+}
+
+.hero{
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.music {
+    width: 90%;    
+    padding: 30px;
+    background-color: RGBA(14,9,9,0.74);
+    display: flex;
+}
+
+.music img{
+    width: 300px;
+    background-color: black;
+}
+
+.music .info{
+    color: white;
+    margin-left: 30px;
+    flex: 1;
+}
+
+.music .info h2 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.music .info p{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.controls img {
+    width: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.waveform_livelight{
+    width: auto;
+    padding: none;
+}
+
+.botao{
+    background: -webkit-linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+    background: -moz-linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+    background: -o-linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+    background: -ms-linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+    background: linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+    border: 1px solid #CCCCCE;
+    border-radius: 3px;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, .3),
+                  0 2px 7px rgba(0, 0, 0, 0.2);
+    color: #616165;
+    display: block;
+    font-family: "Trebuchet MS";
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow:1px 1px 0 #FFF;
+    padding: 5px 15px;
+    position: relative;
+    width: 80px;
+    margin-right: 20px;
+    cursor: pointer;
+   }
+
+.botao:hover{
+    background: -webkit-linear-gradient(bottom, #47b7e4, #F9F9F9 70%);
+    background: -moz-linear-gradient(bottom, #47b7e4, #F9F9F9 70%);
+    background: -o-linear-gradient(bottom, #47b7e4, #F9F9F9 70%);
+    background: -ms-linear-gradient(bottom, #47b7e4, #F9F9F9 70%);
+    background: linear-gradient(bottom, #47b7e4, #F9F9F9 70%);
+}
+
+.botaoAtivo{
+    background: -webkit-linear-gradient(bottom, #c5a3a3, #df9292 70%);
+    background: -moz-linear-gradient(bottom, #c5a3a3, #df9292 70%);
+    background: -o-linear-gradient(bottom, #c5a3a3, #df9292 70%);
+    background: -ms-linear-gradient(bottom, #c5a3a3, #df9292 70%);
+    background: linear-gradient(bottom, #c5a3a3, #df9292 70%);
+}
+   
+.c-loader {
+    animation: is-rotating 1s infinite;
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: #51d4db;
+    height: 25px;
+    width: 25px;    
+    margin-left: 20px;
+  }
+
+  @keyframes is-rotating{
+    to{
+        transform: rotate(1turn);
+    }
+  }
+
+  
+@media screen and (max-width: 480px) {
+	.hero {
+	    flex-direction: column; 
+        flex-flow: column wrap;   
+	}
+
+    .music{
+        flex-direction: column; 
+        flex-flow: column wrap;   
+    }
+
+    .controls{
+        flex-direction: column; 
+        flex-flow: column wrap;  
+    }
+}

@@ -1,0 +1,4 @@
+# ignore all logs
+*.log
+*.mp3
+*.wav

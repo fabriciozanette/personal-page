@@ -1,0 +1,17 @@
+.player {
+    display: flex;
+}
+
+.info-musica{
+    display: flex;
+    flex-direction: column;
+}
+
+.info{
+    display: flex;
+    justify-content: space-between;
+}
+
+header {
+    display: flex;
+}

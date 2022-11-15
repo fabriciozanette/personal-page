@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" type="image/png" href="./img/icone-dj02.png" />
+    <title>Zanette - Music</title>
+</head>
+<body>
+
+    <div class="hero">
+        <div class="music">
+            <img src="./img-albums/serra-catarinence.jpg" alt="Serra Catarinense" height="300px">
+            <div class="info">
+                <h2>Fabricio Zanette</h2>
+                <p>DJ Set - Live Light</p>                
+                
+                <div id="waveform_livelight" class="waveform_liveligh"> </div>
+                
+                <div class="controls">              
+                    <a class="botao" id="play_livelight">PLAY</a>
+                    <a class="botao" id="stop_livelight">STOP</a>
+                    <a class="botao" id="volume_livelight">MUTE</a>
+                    <a class="botao" id="carregar_livelight">CARREGAR</a>
+                    <div id="loading_livelight"></div>
+                </div> 
+            </div>                        
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="music">
+            <img src="./img-albums/bdaythay.png" alt="Serra Catarinense" height="300px">
+            <div class="info">
+                <h2>Fabricio Zanette</h2>
+                <p>DJ Set - B-Day Thayana Sales</p>                
+                
+                <div id="waveform_bdaythay"></div>
+                
+                <div class="controls">              
+                    <a class="botao" id="play_bdaythay">PLAY</a>
+                    <a class="botao" id="stop_bdaythay">STOP</a>
+                    <a class="botao" id="volume_bdaythay">MUTE</a>
+                    <a class="botao" id="carregar_bdaythay">CARREGAR</a>
+                    <div id="loading_bdaythay"></div>
+                </div> 
+            </div>                        
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+
+    <script>
+        const btplay_livelight      = document.querySelector('#play_livelight');
+        const btstop_livelight      = document.querySelector('#stop_livelight');
+        const btmute_livelight      = document.querySelector('#volume_livelight');
+        const btcarregar_livelight  = document.querySelector('#carregar_livelight');
+        const div_loading_livelight = document.querySelector('#loading_livelight');
+        
+        const btplay_bdaythay       = document.querySelector('#play_bdaythay');
+        const btstop_bdaythay       = document.querySelector('#stop_bdaythay');
+        const btmute_bdaythay       = document.querySelector('#volume_bdaythay');
+        const btcarregar_bdaythay   = document.querySelector('#carregar_bdaythay');
+        const div_loading_bdaythay = document.querySelector('#loading_bdaythay');
+                
+        var wavesurfer_livelight = WaveSurfer.create({
+            container: '#waveform_livelight',
+            waveColor: '#dde5ed',
+            progressColor: 'purple',
+            barWidth: 2,
+            height: 90,
+            responsive: true,
+            hideScrollbar: true,
+            barRadius: 2,
+        });
+
+        var wavesurfer_bdaythay = WaveSurfer.create({
+            container: '#waveform_bdaythay',
+            waveColor: '#dde5ed',
+            progressColor: 'blue',
+            barWidth: 2,
+            height: 90,
+            responsive: true,
+            hideScrollbar: true,
+            barRadius: 2,
+        });
+        
+        //wavesurfer_livelight.setPeaks(null); 
+        //wavesurfer_livelight.drawBuffer();
+
+        //--------------------------------------------------------
+        // Setup - LiveLight
+        //--------------------------------------------------------
+        btcarregar_livelight.addEventListener('click', ()=>{
+            btcarregar_livelight.classList.add('botaoAtivo');            
+            wavesurfer_livelight.load('./music/livelight.mp3');            
+        })
+
+       /* https://drive.google.com/drive/folders/16-V8hFOJimNY9ASfqTUTBv9Wp5PnZrma?usp=sharing  */
+
+        btplay_livelight.addEventListener('click', ()=>{
+            wavesurfer_livelight.playPause();            
+            //alert(wavesurfer_livelight.getDuration());
+            if (btplay_livelight.innerText == 'PLAY') {
+                btplay_livelight.innerHTML = 'PAUSE';
+                btplay_livelight.classList.add('botaoAtivo');
+            }            
+            else{
+                btplay_livelight.innerHTML = 'PLAY'; 
+                btplay_livelight.classList.remove('botaoAtivo');
+            }            
+        })
+
+        btstop_livelight.addEventListener('click', ()=>{
+            wavesurfer_livelight.stop();
+            btplay_livelight.innerHTML = 'PLAY'; 
+            btplay_livelight.classList.remove('botaoAtivo');
+        })
+
+        btmute_livelight.addEventListener('click', ()=>{
+            wavesurfer_livelight.toggleMute();
+        })
+
+        wavesurfer_livelight.on('loading',function(contador){
+            if (div_loading_livelight.classList.contains("c-loader") == false){
+                btcarregar_livelight.style.display = "none";
+                div_loading_livelight.classList.add('c-loader');
+            }
+        });
+
+        wavesurfer_livelight.on('ready',function(){
+            div_loading_livelight.classList.remove('c-loader');            
+        });
+        
+        wavesurfer_livelight.on('mute',function(boleanMute){
+            if (boleanMute == true){
+                btmute_livelight.classList.add('botaoAtivo');
+            }
+            else{
+                btmute_livelight.classList.remove('botaoAtivo');
+            }
+        });
+
+        //--------------------------------------------------------
+        // Setup - bdaythay
+        //--------------------------------------------------------
+        btcarregar_bdaythay.addEventListener('click', ()=>{
+            btcarregar_bdaythay.classList.add('botaoAtivo');
+            wavesurfer_bdaythay.load('./music/livelight.mp3');                        
+        })
+
+        btplay_bdaythay.addEventListener('click', ()=>{
+            wavesurfer_bdaythay.playPause();            
+            //alert(wavesurfer_bdaythay.getDuration());
+            if (btplay_bdaythay.innerText == 'PLAY') {
+                btplay_bdaythay.innerHTML = 'PAUSE';
+                btplay_bdaythay.classList.add('botaoAtivo');
+            }            
+            else{
+                btplay_bdaythay.innerHTML = 'PLAY'; 
+                btplay_bdaythay.classList.remove('botaoAtivo');
+            }            
+        })
+
+        btstop_bdaythay.addEventListener('click', ()=>{
+            wavesurfer_bdaythay.stop();
+            btplay_bdaythay.innerHTML = 'PLAY'; 
+            btplay_bdaythay.classList.remove('botaoAtivo');
+        })
+        
+        btmute_bdaythay.addEventListener('click', ()=>{
+            wavesurfer_bdaythay.toggleMute();
+        })
+
+        wavesurfer_bdaythay.on('loading',function(contador){
+            if (div_loading_bdaythay.classList.contains("c-loader") == false){
+                btcarregar_bdaythay.style.display = "none";
+                div_loading_bdaythay.classList.add('c-loader');
+            }
+        });
+
+        wavesurfer_bdaythay.on('ready',function(){
+            div_loading_bdaythay.classList.remove('c-loader');
+        });
+        
+        wavesurfer_bdaythay.on('mute',function(boleanMute){
+            if (boleanMute == true){
+                btmute_bdaythay.classList.add('botaoAtivo');
+            }
+            else{
+                btmute_bdaythay.classList.remove('botaoAtivo');
+            }
+        });
+
+    </script>
+    <!-- https://wavesurfer-js.org/ -->
+</body>
+</html>
