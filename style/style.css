@@ -1,0 +1,16 @@
+/*
+body {
+    background: url("/images/site_em_construcao.jpg") no-repeat top ;    
+    background-color: #f0f0f0;
+    
+}
+*/
+
+div {
+    font-size: 50px;
+    margin-left: 40px;
+    margin-top: 40px;
+    background-color: aquamarine;
+    width: 50%;
+    align-items: center;
+}
